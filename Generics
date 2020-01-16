@@ -1,24 +1,25 @@
 using System;
 
-namespace Generics
+namespace ExtensionMethods
 {
-    public class Pair<T,S>
+    public  static class StringUtilities
     {
-        public T First { get; set; }
-        public S Second { get; set; }
-        public Pair(T first, S second)
+        public static bool IsLongerThan(this string input, int howLong)
         {
-            First = first;
-            Second = second;
+            return input.Length > howLong;
+        }
+        public static bool IsFemaleName(this string input)
+        {
+            return input.ToLower().EndsWith("a") && input.ToLower() !="Kuba";
         }
     }
-    class Programm
+    class Program
     {
         static void Main(string[] args)
         {
-            var firstPair = new Pair<int, int>(1,8);
-            var secondPair = new Pair<string, string>( "Marcin", "Jagiela" );
-            var thirdPair = new Pair<int, DateTime>(1, DateTime.Now); 
+            string name = "Marcin";
+            Console.WriteLine(name.IsLongerThan(5));
+            Console.WriteLine(name.IsFemaleName());
         }
     }
 }
